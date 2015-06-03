@@ -1,0 +1,78 @@
+
+<head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meteor Cahier</title>
+ </head>
+
+<body></body>
+
+<template name="layout1">
+
+    {{> Template.dynamic template=upper}}
+    <!-- Bootstrap container... if we'd put the container around individual templates, they couldn't be nested.-->
+    <div class="backer">
+	<div class="container-fluid">
+	    {{> Template.dynamic template=middle}}
+	    <br/>
+	</div>
+    </div>
+    {{> Template.dynamic template=lower}}
+</template>
+
+<template name="layoutEntry">
+    {{> Template.dynamic Template=middle}}
+</template>
+
+<template name="header">
+            <header class="navbar navbar-default">
+	        <div class="container-fluid">
+	            <!-- {{#unless currentUser}} -->
+	            <!-- {{else}} -->
+	            <!-- <a class="personButton pull-left icon icon-person"></a> -->
+	            <!-- {{/unless}} -->
+	            <h4 class="navbar-brand logoFirst">Cahier 카예</h4>
+            <ul class="nav navbar-nav navbar-right top-but">
+		        {{> loginButtons}} <!-- here -->
+            </ul>
+	</div>
+    </header>
+ </template>
+
+<template name="footer-a">
+            <div class="bottom low-col">
+	        this is footer-a
+    </div>
+ </template>
+
+<template name="entryChoice">
+
+    {{#if currentUser }}
+
+    <div class="entryButtonWrap">
+	<div>
+	    <button type="submit" class="btn btn-lg btn-block enterBtn" id="enterPomo">Pomo</button>
+	</div>
+	<div>
+	    <button type="submit" class="btn btn-lg btn-block  enterBtn " id="enter30">30 Seconds</button>
+	</div>
+	<div>
+	    <button type="submit" class="btn btn-lg btn-block enterBtn " id="enterOther">Notes</button>
+	</div>
+    </div>
+    {{else}}
+    <div>
+	<header class="navbar navbar-default">
+	    <div class="container-fluid">
+		<!-- {{#unless currentUser}} -->
+		<!-- {{else}} -->
+		<!-- <a class="personButton pull-left icon icon-person"></a> -->
+		<!-- {{/unless}} -->
+
+		<ul class="nav navbar-nav navbar-right top-but" id="entryLogin">
+		    {{> loginButtons}} <!-- here -->
+		</ul>
+	    </div>
+	</header>
+    </div>
+    {{/if}}
+</template>
